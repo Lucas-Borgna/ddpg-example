@@ -5,8 +5,12 @@ from ddpg_tf2 import Agent
 
 from utils import plot_learning_curve
 
+from env import TrackEnv
+
 if __name__ == "__main__":
-    env = gym.make("Pendulum-v1")
+    # env = gym.make("Pendulum-v1")
+    env = TrackEnv()
+
     agent = Agent(
         input_dims=env.observation_space.shape,
         env=env,
@@ -15,7 +19,7 @@ if __name__ == "__main__":
 
     n_games = 250
 
-    figure_file = "plots/pendulum.png"
+    figure_file = "plots/pendulum-tracking.png"
 
     best_score = env.reward_range[0]
     score_history = []
